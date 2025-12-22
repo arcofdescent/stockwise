@@ -1,0 +1,53 @@
+# synapse/agents/run_graph.py
+# This file runs the Synapse Trading Agent graph with real-time updates in the terminal.
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
+
+import argparse
+import asyncio
+from stockwise.graph import synapse_graph
+
+async def run_synapse(tickers):
+    """
+    Asynchronously executes the Synapse graph with a list of tickers.
+    """
+    # Initial state as defined in our synapse.agents.state
+    initial_state = {
+        "tickers": tickers,
+        "stock_data": [],
+        "analysis_report": ""
+    }
+
+    print(f"🚀 Synapse Agent started for: {', '.join(tickers)}\n")
+
+    # Use .astream for real-time updates (perfect for terminal or React)
+    async for event in synapse_graph.astream(initial_state, stream_mode="updates"):
+        # print(f"DEBUG EVENT: {event}\n")
+        for node_name, output in event.items():
+            if node_name == "fetch_stock_data":
+                # fetch_stock_data returns {"stock_data": [snapshot]}
+                stock = output["stock_data"][0]
+                print(f"✅ Processed {stock['ticker']}: Price Rs.{stock['price']} | RSI: {stock['technical_indicators']['rsi']}")
+            
+            elif node_name == "generate_final_report":
+                print(f"\n--- 📈 SYNAPSE FINAL REPORT ---")
+                print(output["analysis_report"])
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Synapse Trading Agent CLI")
+    parser.add_argument(
+        "tickers", 
+        nargs="+", 
+        help="List of stock tickers (e.g., AAPL TSLA MSFT NVDA GOOGL)"
+    )
+    
+    args = parser.parse_args()
+    
+    # Limit to 5 for our prototype
+    input_tickers = args.tickers[:5]
+    
+    asyncio.run(run_synapse(input_tickers))
+    

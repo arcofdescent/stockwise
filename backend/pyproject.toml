@@ -4,4 +4,13 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "dotenv>=0.9.9",
+    "langchain-openai>=0.3.35",
+    "langgraph>=0.6.11",
+    "numpy>=2.0.2",
+    "pandas>=2.3.3",
+    "python-dotenv>=1.2.1",
+    "ta-lib>=0.6.8",
+    "yfinance>=1.0",
+]

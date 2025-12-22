@@ -1,0 +1,84 @@
+
+# Python
+# Byte-code files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+.Python/
+.python-version
+
+# Virtual environment
+.venv/
+venv/
+env/
+# Specific to uv (if you named it something else or for other venv tools)
+.uv/
+
+# Distribution / packaging
+.eggs/
+*.egg-info/
+build/
+*.whl
+*.zip
+*.tar.gz
+
+# Development and testing
+.pytest_cache/
+.coverage
+.mypy_cache/
+htmlcov/
+.nox/
+
+# Database files (if you use SQLite, for example)
+*.db
+*.sqlite3
+
+# Environment variables
+.env
+.flaskenv # If using Flask with flask-dotenv
+
+# IDE-specific files
+# VS Code
+.vscode/
+
+# PyCharm / IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+*.ipynb
+
+# OS generated files
+.DS_Store    # macOS
+Thumbs.db    # Windows
+ehthumbs.db  # Windows
+Desktop.ini  # Windows
+
+# Logs
+*.log
+logs/ # Or whatever directory you use for logs
+
+# Temporary files
+*~
+*.bak
+*.swp
+*.swo
+
+# =========================================================
+# IMPORTANT: uv.lock - READ THIS CAREFULLY
+# uv.lock should generally be COMMITTED to version control.
+# It ensures exact reproducibility of your environment.
+# DO NOT uncomment the line below unless you have a strong reason not to commit it.
+# uv.lock
+# =========================================================
+
+# If you still generate a requirements.txt from `pip freeze` manually
+# and consider uv.lock the source of truth, you might ignore this:
+# requirements.txt
+
+/data/
+
