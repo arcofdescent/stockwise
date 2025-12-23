@@ -1,10 +1,10 @@
-# synapse/agents/nodes/synthesizer.py
+# stockwise/nodes/synthesizer.py
 # Synthesizer Node: Aggregates the 5 stock snapshots and picks a winner.
 
 from langchain_openai import ChatOpenAI
-from stockwise.state import SynapseState
+from stockwise.state import StockwiseState
 
-def generate_final_report(state: SynapseState):
+def generate_final_report(state: StockwiseState) -> StockwiseState:
     """
     Synthesizer Node: Aggregates the 5 stock snapshots and picks a winner.
     """
@@ -26,7 +26,7 @@ def generate_final_report(state: SynapseState):
 
     # 2. Craft the System Prompt
     system_prompt = (
-        "You are the Synapse Strategic Analyst. "
+        "You are the Stockwise Strategic Analyst. "
         "Review the technical and fundamental data for these 5 stocks. "
         "Identify the stock with the best risk/reward profile (e.g., strong trend but not overbought). "
         "Provide a 'Top Pick' and a brief 3-sentence justification."

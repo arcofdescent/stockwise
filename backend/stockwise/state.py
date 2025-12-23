@@ -1,4 +1,4 @@
-# synpase/agents/state.py
+# stockwise/state.py
 # This file defines the global state structure using LangGraph's TypedDict and Annotated features.
 
 import operator
@@ -14,8 +14,8 @@ class StockSnapshot(TypedDict):
     technical_indicators: Dict[str, Any]  # RSI, SMA, etc.
     sentiment_score: float  # If you add news later
 
-class SynapseState(TypedDict):
-    """The global state for the Synapse Trading Agent."""
+class StockwiseState(TypedDict):
+    """The global state for the Stockwise Trading Agent."""
     # Input: What we want to track
     tickers: List[str]
     
