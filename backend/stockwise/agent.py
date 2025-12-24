@@ -1,4 +1,4 @@
-# stockwise/run_graph.py
+# stockwise/agent.py
 # This file runs the Stockwise Trading Agent graph with real-time updates in the terminal.
 
 import os
