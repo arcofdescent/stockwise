@@ -24,42 +24,20 @@ cd stockwise/backend
 uv venv
 source .venv/bin/activate
 uv sync --dev
-python main.py
-
-# In a separate terminal
-cd ../frontend
-npm install
-npm run dev
 ```
 
-## 🧩 Project Structure
+We currently support OpenAI API, so add your key to .env (or add to your environment variables):
 
 ```
-stockwise/
-  backend/         # Python: data fetching, analysis, LangGraph nodes
-    main.py
-    pyproject.toml
-	stockwise/
-	  nodes/
-		data_fetching.py
-		analysis.py
-		synthesis.py
-	  utils/
-		helpers.py
-  frontend/        # React: UI, charts, reports
-    src/
-      App.jsx
-      index.js
-    package.json
-  docs/            # Additional documentation/assets
-  tests/           # Test suites (coming soon)
-  .github/         # Templates for issues, PRs, workflows
-    ISSUE_TEMPLATE.md
-    PULL_REQUEST_TEMPLATE.md
-  README.md
-  LICENSE
-  CONTRIBUTING.md
-  .gitignore
+OPENAI_API_KEY="your_openai_api_key_here"
+```
+
+Example run commands:
+
+* Run the agent for stock analysis:
+
+```bash
+python -m stockwise.agent INFY.NS IOC.NS TCS.NS # Analyze Infosys, Indian Oil, TCS stocks
 ```
 
 ## 🛡️ Disclaimer
@@ -71,7 +49,7 @@ Use at your own risk and always conduct your own research before making investme
 
 ## 🏗️ Features/Milestones
 
-- [ ] Modular backend with LangGraph nodes for:
+- [x] Modular backend with LangGraph nodes for:
   - Fetching stock data (yfinance, broker APIs)
   - Technical/fundamental analysis
   - Synthesis and report generation
